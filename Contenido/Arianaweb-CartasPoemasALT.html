@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>💌 Cartas para ti 💌</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #e8c9f8, #fce4ec);
+      margin: 0;
+      padding: 0;
+      color: #4A006E;
+	  animation: entradaSuave 1s ease-out both;
+    }
+	@keyframes entradaSuave {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+    header {
+      text-align: center;
+      padding: 30px 15px 10px;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      color: #880E4F;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .carta {
+      background-color: #fff;
+      border: 2px solid #CE93D8;
+      border-radius: 12px;
+      box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      margin: 15px;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .carta h2 {
+      color: #6A1B9A;
+    }
+	
+	.botones {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+
+    .boton {
+      background-color: #BA68C8;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .boton:hover {
+      background-color: #9C27B0;
+    }
+
+    /* Popup */
+    .popup-fondo {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 998;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      animation: aparecer 0.4s ease;
+      position: relative;
+      max-width: 500px;
+    }
+
+    .popup-contenido {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+    @keyframes brillar {
+      0% { box-shadow: 0 0 10px #f06292; }
+      50% { box-shadow: 0 0 25px #ba68c8; }
+      100% { box-shadow: 0 0 10px #f06292; }
+    }
+
+    .cerrar {
+      background-color: #E91E63;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      float: right;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      color: #6A1B9A;
+    }
+
+    @media (max-width: 600px) {
+      .popup-contenido, .carta {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>💌 Cartas para ti 💌</h1>
+    <p>Un rincón especial para dejarte palabras con cariño</p>
+  </header>
+  <div class="botones">
+      <button class="boton" onclick="location.href='Arianaweb.html'">Página principal</button>
+      <button class="boton" onclick="location.href='Arianaweb-Galeria.html'">Galería de Fotos</button>
+      <button class="boton" onclick="location.href='Arianaweb-CartasPoemas.html'">Cartas/Poemas</button>
+    </div>
+
+  <main>
+    <!-- Carta 1 -->
+    <div class="carta">
+      <h2>Carta 1: Para un día brillante</h2>
+      <p>Haz clic para leer esta cartita alegre 🌟</p>
+      <button class="boton" onclick="mostrarPopup('popup1')">Leer carta</button>
+    </div>
+
+    <!-- Puedes copiar este bloque para más cartas -->
+    <div class="carta">
+      <h2>Carta 2: Cuando te sientas bajita</h2>
+      <p>Haz clic si necesitas un abrazo en palabras 🤍</p>
+      <button class="boton" onclick="mostrarPopup('popup2')">Leer carta</button>
+    </div>
+    <!-- Carta 3 -->
+<div class="carta">
+  <h2>Carta 3: Te admiro 💪</h2>
+  <p>Haz clic para recordarte lo increíble que eres.</p>
+  <button class="boton" onclick="mostrarPopup('popup3')">Leer carta</button>
+</div>
+
+<!-- Carta 4 -->
+<div class="carta">
+  <h2>Carta 4: Gracias por estar 🌷</h2>
+  <p>Haz clic si quieres un gracias sincero.</p>
+  <button class="boton" onclick="mostrarPopup('popup4')">Leer carta</button>
+</div>
+
+<!-- Carta 5 -->
+<div class="carta">
+  <h2>Carta 5: Tu sonrisa 🌞</h2>
+  <p>Haz clic para leer sobre esa sonrisa que tanto alegra.</p>
+  <button class="boton" onclick="mostrarPopup('popup5')">Leer carta</button>
+</div>
+
+<!-- Carta 6 -->
+<div class="carta">
+  <h2>Carta 6: Te extraño 🌙</h2>
+  <p>Haz clic si alguna vez nos hemos distanciado un poco.</p>
+  <button class="boton" onclick="mostrarPopup('popup6')">Leer carta</button>
+</div>
+
+<!-- Carta 7 -->
+<div class="carta">
+  <h2>Carta 7: Recuerdos lindos 📸</h2>
+  <p>Haz clic si quieres recordar momentos bonitos.</p>
+  <button class="boton" onclick="mostrarPopup('popup7')">Leer carta</button>
+</div>
+
+<!-- Carta 8 -->
+<div class="carta">
+  <h2>Carta 8: Solo porque sí 🧸</h2>
+  <p>Haz clic para leer algo tierno sin razón alguna.</p>
+  <button class="boton" onclick="mostrarPopup('popup8')">Leer carta</button>
+</div>
+
+<!-- Carta 9 -->
+<div class="carta">
+  <h2>Carta 9: Un día difícil ☁️</h2>
+  <p>Haz clic si necesitas palabras que abracen.</p>
+  <button class="boton" onclick="mostrarPopup('popup9')">Leer carta</button>
+</div>
+
+<!-- Carta 10 -->
+<div class="carta">
+  <h2>Carta 10: Te aprecio mucho 🌈</h2>
+  <p>Haz clic para saber lo importante que eres.</p>
+  <button class="boton" onclick="mostrarPopup('popup10')">Leer carta</button>
+</div>
+    
+  </main>
+
+  <!-- POPUPS -->
+  <div class="popup" id="popup1">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup1')">Cerrar</button>
+      <h2>☀️ ¡Hola, sol radiante! ☀️</h2>
+      <p>Hoy quiero recordarte lo valioso/a que eres. Cada paso que das es una semilla de alegría en alguien más. Sonríe, porque tu energía ilumina más de lo que imaginas.</p>
+    </div>
+  </div>
+
+  <div class="popup" id="popup2">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup2')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>No estás solo/a. Está bien sentirse triste a veces. Respira, descansa, y recuerda que eres amado/a más de lo que puedes ver. Te abrazo con estas palabras.</p>
+    </div>
+  </div>
+  
+  <div class="popup" id="popup3">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup3')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>Admiro tu fuerza, tu corazón y tu forma de seguir adelante. Nunca olvides todo lo que vales. Eres capaz de lograr cosas maravillosas, y yo siempre lo he creído.</p>
+    </div>
+  </div>
+  
+  <div class="popup" id="popup4">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup4')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>No siempre lo digo, pero gracias por estar ahí. Tu presencia hace mis días más cálidos. Eres una bendición y te valoro más de lo que imaginas.</p>
+    </div>
+  </div>
+  
+  <div class="popup" id="popup5">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup5')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>No hay tormenta que no se disuelva con tu sonrisa. Es genuina, hermosa y contagiosa. Gracias por compartir esa luz tan tuya con el mundo (y conmigo).</p>
+    </div>
+  </div>
+  
+  <div class="popup" id="popup6">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup6')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>Si alguna vez nos hemos alejado un poco, quiero que sepas que siempre pienso en ti con cariño. Nuestra conexión sigue viva, sin importar la distancia.</p>
+    </div>
+  </div>
+  
+  <div class="popup" id="popup7">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup7')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>Me encanta pensar en los momentos que hemos compartido. Cada risa, mirada, palabra y locura forman parte de mis recuerdos más especiales. Gracias por eso.</p>
+    </div>
+  </div>
+  
+  <div class="popup" id="popup8">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup8')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>No necesitas un motivo para recibir cariño. Hoy solo quiero decirte que te quiero muchísimo, simplemente porque sí. Y eso nunca cambiará.</p>
+    </div>
+  </div>
+  
+  <div class="popup" id="popup9">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup9')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>Si hoy se siente pesado, si el mundo parece demasiado, solo detente y respira. Aquí tienes palabras suaves que te abracen. No estás sola/o. Estoy contigo.</p>
+    </div>
+  </div>
+  
+  <div class="popup" id="popup10">
+    <div class="popup-contenido">
+      <button class="cerrar" onclick="cerrarPopup('popup10')">Cerrar</button>
+      <h2>🌧️ En días grises... 🌈</h2>
+      <p>Eres única, especial y muy querida. Aunque no lo diga todo el tiempo, vales muchísimo. Gracias por ser tú, con todo lo que eres. Te aprecio con el alma.</p>
+    </div>
+  </div>
+
+  <footer>
+    Hecho con mucho cariño 💖
+  </footer>
+
+  <!-- JS para popups -->
+  <script>
+  function mostrarPopup(imagen, mensaje, tituloImg = null, tamaño = "normal") {
+  const popupImg = document.getElementById('popupImg');
+  const popupTexto = document.getElementById('popupTexto');
+  const popupTituloImg = document.getElementById('popupTituloImg');
+
+  popupImg.src = imagen;
+  popupTexto.innerText = mensaje;
+
+  if (tituloImg) {
+    popupTituloImg.src = tituloImg;
+    popupTituloImg.style.display = 'block';
+  } else {
+    popupTituloImg.style.display = 'none';
+  }
+
+  const popup = document.getElementById('popup');
+  popup.style.maxWidth = (tamaño === "grande") ? "800px" : "500px";
+
+  document.getElementById('popupFondo').style.display = 'flex';
+}
+
+  function cerrarPopup() {
+    document.getElementById('popupFondo').style.display = 'none';
+  }
+</script>
+</body>
+</html>

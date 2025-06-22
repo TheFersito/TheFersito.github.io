@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <link rel="icon" href="imagenes/logo.png" type="image/png">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>💖 Eres la mejor 💖</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: Georgia, "Times New Roman", Times, serif;
+      position: relative;
+	  animation: entradaSuave 1s ease-out both;
+    }
+	
+
+    .fondo-animado {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: url(imagenes/menu_bgALT.png) repeat;
+	animation: moverFondo 30s linear infinite;
+	z-index: -1;
+    }
+
+    @keyframes moverFondo {
+      from { background-position: 0 0; }
+      to { background-position: 1000px 1000px; }
+    }
+
+    main {
+      flex: 1;
+      background-color: rgba(194, 133, 224, 0.9);
+      width: 85%;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 20px;
+      box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5), 5px 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    header {
+	background-color: white;
+	border-bottom: 8px solid #C285E0;
+	text-align: center;
+	color: #c285e0;
+	width: 85%;
+	max-width: 960px;
+	margin: 0 auto;
+	padding: 20px;
+	box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5), 5px 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    h1 {
+	color: #933FBF;
+	text-shadow: 2px 2px 8px #C79ADE;
+	font-size: 3em;
+	margin-bottom: 30px;
+    }
+
+    h2 {
+	color: #933FBF;
+	font-size: 2em;
+	background-color: white;
+	border-radius: 30px;
+	border: 3px solid #933FBF;
+	text-align: center;
+	font-family: 'Comic Sans MS';
+	padding: 5px;
+	width: 85%;
+    }
+
+    p {
+	color: white;
+	font-family: "Comic Sans MS", cursive;
+    }
+
+    .mensaje {
+	padding: 30px;
+	text-align: center;
+	font-size: 1.2em;
+    }
+
+    .galeria {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+    }
+
+    .galeria img {
+      width: 100%;
+  	max-width: 250px;
+  height: auto;
+      object-fit: cover;
+      border-radius: 15px;
+      border: 4px solid #933FBF;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 10px #933FBF;
+    }
+	.video-galeria {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 15px;
+  border: 4px solid #C285E0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+.video-vertical {
+  width: auto;
+  height: 500px;
+  display: block;
+  margin: 20px auto;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+    footer {
+	background-color: white;
+	text-align: center;
+	padding: 20px;
+	color: #933FBF;
+	font-size: 1em;
+	font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	width: 960px;
+	max-width: 85%;
+	margin: 0 auto;
+	box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5), 5px 0 10px rgba(0, 0, 0, 0.5);
+	border-top: 5px solid #C285E0;
+    }
+
+    .botones {
+      flex-direction: column;
+      gap: 15px;
+      text-align: center;
+    }
+
+    .boton {
+	background-color: white;
+	border: 2px solid #933FBF;
+	padding: 15px 30px;
+	border-radius: 30px;
+	font-size: 1.2em;
+	color: #933FBF;
+	cursor: pointer;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+	transition: transform 0.2s, background-color 0.3s;
+	font-family: Tahoma, Geneva, sans-serif;
+    }
+
+    .boton:hover {
+	background-color: #F1E8F7;
+	transform: scale(1.05) rotate(-1deg);
+    }
+
+    audio {
+      display: none;
+    }
+
+    .popup-fondo {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.6);
+      z-index: 998;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .popup {
+      background: white;
+      padding: 15px;
+      border-radius: 15px;
+      animation: aparecer 0.4s ease;
+      position: relative;
+      max-width: 500px;
+    }
+
+    .popup-contenido {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+    }
+	@keyframes bordeColorAnimado {
+  0%   { border-color: black; }
+  25%  { border-color: #933FBF; }
+  50%  { border-color: #C285E0; }
+  75%  { border-color: #FF69B4; }
+  100% { border-color: black; }
+}
+
+.popup img {
+  border: 4px solid black;
+  border-radius: 10px;
+  animation: bordeColorAnimado 5s linear infinite;
+}
+.popup img:hover {
+  transform: scale(1.5);
+  transition: transform 0.3s ease;
+  z-index: 1000;
+}
+
+    .popup-contenido img {
+	border-radius: 10px;
+	max-width: 100%;
+	max-height: 80vh;
+	border-radius: 10px;
+	height: auto;
+	width: auto;
+    }
+
+    .popup-contenido p {
+      font-family: "Comic Sans MS", cursive;
+      font-size: 1.1em;
+      color: #4B004F;
+      margin: 0;
+      text-align: center;
+    }
+	@keyframes brillo {
+  0%, 100% {
+    color: #4B004F;
+    text-shadow: 0 0 5px #fff, 0 0 10px #ff5cf3, 0 0 15px #ff5cf3, 0 0 20px #ff5cf3;
+  }
+  50% {
+    color: #4B004F;
+    text-shadow: 0 0 2px #ff5cf3, 0 0 5px #ff5cf3, 0 0 10px #fff, 0 0 15px #fff;
+  }
+}
+.popup p {
+	animation: brillo 3s infinite;
+}
+
+    .cerrar {
+      position: absolute;
+      top: 5px;
+      right: 10px;
+      font-size: 20px;
+      color: #933FBF;
+      cursor: pointer;
+    }
+	.imagen-pequena {
+  max-width: 160px;
+  max-height: 160px;
+}
+#popupTituloImg {
+  display: block;
+  max-width: 70%;
+  height: auto;
+  margin: 0 auto 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+    @keyframes aparecer {
+      0% {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+  </style>
+  <style>
+  audio {
+	display: none;
+    }
+	.audio-controls {
+	background-color: white;
+	border: 2px solid #933FBF;
+	color: #933FBF;
+	padding: 15px 25px;
+	font-size: 18px;
+	border-radius: 25px;
+	box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+	cursor: pointer;
+	transition: all 0.3s ease;
+	margin: 10px;
+    }
+
+    .audio-controls:hover {
+	background-color: #F1E8F7;
+    }
+
+    .volume-slider {
+      width: 150px;
+      margin-top: 10px;
+    }
+	.gifs-container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+
+.gif-musica {
+	width: 120px;
+	height: auto;
+	/* [disabled]border-radius: 15px; */
+	/* [disabled]box-shadow: 0 0 10px #933FBF; */
+	animation: flotar 2s ease-in-out infinite alternate;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-15px); }
+}
+	.musica-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px 0;
+}
+
+#audio-controls, #volumen, #avisoAudio {
+  text-align: center;
+}
+
+#audio-controls {
+  margin-bottom: 10px;
+}
+
+#audio-controls, .volume-slider {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#audio-controls:hover {
+  background-color: #53246C;
+}
+
+#avisoAudio {
+  color: #933FBF;
+  font-style: italic;
+  display: none;
+  text-align: center;
+  margin-top: 10px;
+}
+@keyframes entradaTitulo {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h2 {
+  animation: entradaTitulo 1s ease-out;
+}
+.zoom-activo {
+  transform: scale(2);
+  cursor: zoom-out;
+  transition: transform 0.3s ease;
+}
+	</style>
+ 
+</head>
+<body>
+  <div class="fondo-animado"></div>
+  <header>
+    <h1>📜 ¡Cartas y Poemas! 📝</h1>
+  </header>
+  <main>
+  </br>
+    <div class="botones">
+      <button class="boton" onclick="location.href='Arianaweb.html'">Página principal</button>
+      <button class="boton" onclick="location.href='Arianaweb-Galeria.html'">Galería de Fotos</button>
+      <button class="boton">Cartas/Poemas</button>
+    </div>
+
+    <section class="mensaje">
+      <p>Aquí encontrarás los poemas o cartas que alguna vez te hice, ¿te digo algo?, dar una releida a estas cosas me hacen pensar en lo enamorado que estaba de ti jsjs</p>
+    </section>
+
+<div class="musica-container">
+  <audio id="musica" loop>
+    <source src="imagenes/GreenRoom.mp3" type="audio/mpeg">
+  </audio>
+  
+<div style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 20px;">
+  <div id="gifsMusicales" style="display: none; width: 100%; justify-content: center; align-items: center; gap: 20px; margin-bottom: 10px;" class="gifs-container">
+    <img src="imagenes/musical-notes-joypixels.gif" alt="gif1" class="gif-musica flotante">
+    <img src="imagenes/musical-notes-joypixels.gif" alt="gif2" class="gif-musica flotante">
+  </div>
+
+  <button id="playPauseBtn" class="audio-controls">▶️ Reproducir música</button><br>
+  <input id="volumen" class="volume-slider" type="range" min="0" max="1" step="0.01" value="1">
+  <p id="avisoAudio" style="color:white; font-style:italic; display:none;">Haz clic en "Reproducir música" si deseas música de fondo, no olvides ajustar el volumen 🎵</p>
+</div>
+
+<h2> 📝 Poemas 📝 </h2>
+<section class="galeria">
+      <img src="imagenes/Portadas/1.png" onclick="mostrarPopup('imagenes/Ari y Fer/Si Tan Solo Supieras.png', 'La pregunta es: Si lo sabias, verdad???')">
+      <img src="imagenes/Portadas/2.png" onclick="mostrarPopup('imagenes/Ari y Fer/Siempre estare contigo, Arianita.png', 'Sep, nunca te dejare sola, alguien como tu nunca va a estar sola, asi que tendras que soportarme.')">
+    </section>
+
+<h2>📜 Cartas 📜</h2>
+<section class="galeria">
+      <img src="imagenes/Portadas/3.png" onclick="mostrarPopup('imagenes/Ari y Fer/Carta de amor.png', 'Según dicen que recordar es volver a vivir, pero yo creo que es que te den paltas tras recordar, me aguacate.')">
+      <img src="imagenes/Portadas/4.png" onclick="mostrarPopup('imagenes/Ari y Fer/Recordar lo especial (2).png', 'No me importa cuantos defectos tengas, eres alguien genial, hermosa, especial y sobre todo ÚNICA, nunca permitas que te hagan daño, por favor.')">
+      <img src="imagenes/Portadas/4_.png" onclick="mostrarPopup('imagenes/Ari y Fer/Recordar lo especial (1).png', 'Nose que mas te puedo decir, eres muy importante para mi.')">
+      
+    </section>
+
+<h2>📜 Tus Cartas 📜</h2>
+<section class="galeria">
+      <img src="imagenes/Portadas/5.png" onclick="mostrarPopup('imagenes/Ari y Fer/FeryAri.png', 'Desearia decirte lo mismo que está en la carta, pero hey, me hiciste feliz con lo que pudiste hacer, te entiendo, no es tu culpa, no debes sentirte mal, nunca me lastimaste, si hay algún problema, lo vamos a resolver juntos, si?')">
+      <img src="imagenes/Portadas/6.png" onclick="mostrarPopup('imagenes/Ari y Fer/habiaunavez.png', 'Y colorin colorado, nuestro cuento no se ha acabado.')">
+      <img src="imagenes/Portadas/7.png" onclick="mostrarPopup('imagenes/Ari y Fer/ElAmor.png', 'Créeme, no me voy a enamorar de la misma forma que lo hice contigo, que loco no?? jaja')">
+      
+    </section>
+
+
+<h2> Gif chistoso </h2>
+<section class="galeria">
+      <img src="imagenes/tennadance2.gif" onclick="mostrarPopup('imagenes/tennadance2.gif', 'Que?? Disfruta del gif bailando :V')">
+    </section>
+    
+
+<div id="popupFondo" class="popup-fondo" onclick="cerrarPopup()">
+  <div id="popup" class="popup" onclick="event.stopPropagation()">
+    <span class="cerrar" onclick="cerrarPopup()">✖</span>
+    <div class="popup-contenido">
+  <img id="popupTituloImg" src="" alt="Título" style="display:none; max-width: 90%; height: auto; margin-top: 10px; border-radius: 10px;">
+  <img id="popupImg" src="" alt="Imagen ampliada">
+  <p id="popupTexto"></p>
+</div>
+  </div>
+</div>
+  </main>
+  <footer>
+    Hecho con mucho cariño de tu Fersito, quien estará siempre para ti, sin importar las circunstancias ♥♥
+  </footer>
+  
+<script>
+  function mostrarPopup(imagen, mensaje, tituloImg = null, tamaño = "normal") {
+  const popupImg = document.getElementById('popupImg');
+  const popupTexto = document.getElementById('popupTexto');
+  const popupTituloImg = document.getElementById('popupTituloImg');
+
+  popupImg.src = imagen;
+  popupTexto.innerText = mensaje;
+
+  if (tituloImg) {
+    popupTituloImg.src = tituloImg;
+    popupTituloImg.style.display = 'block';
+  } else {
+    popupTituloImg.style.display = 'none';
+  }
+
+  const popup = document.getElementById('popup');
+  popup.style.maxWidth = (tamaño === "grande") ? "800px" : "500px";
+
+  document.getElementById('popupFondo').style.display = 'flex';
+}
+
+  function cerrarPopup() {
+    document.getElementById('popupFondo').style.display = 'none';
+  }
+</script>
+
+<script>
+  const audio = document.getElementById('musica');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const volumenSlider = document.getElementById('volumen');
+  const avisoAudio = document.getElementById('avisoAudio');
+
+  window.addEventListener("load", () => {
+    audio.volume = 1;
+    audio.play().catch(() => {
+      // Autoplay bloqueado, mostramos aviso
+      avisoAudio.style.display = 'block';
+    });
+  });
+
+  playPauseBtn.addEventListener('click', () => {
+  const gifs = document.getElementById('gifsMusicales');
+
+  if (audio.paused) {
+    audio.play();
+    playPauseBtn.innerText = "⏸ Pausar música";
+    gifs.style.display = 'flex';
+  } else {
+    audio.pause();
+    playPauseBtn.innerText = "▶️ Reproducir música";
+    gifs.style.display = 'none';
+  }
+});
+</script>
+
+<script>
+  const popupImg = document.getElementById('popupImg');
+  popupImg.addEventListener('click', () => {
+    popupImg.classList.toggle('zoom-activo');
+  });
+</script>
+
+
+</body>
+</html>
