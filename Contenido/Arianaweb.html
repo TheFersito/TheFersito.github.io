@@ -3,6 +3,7 @@
 <head>
   <link rel="icon" href="imagenes/logo.png" type="image/png">
   <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>💖 Eres la mejor 💖</title>
@@ -55,6 +56,9 @@
       font-size: 3em;
       margin-bottom: 30px;
     }
+	h2 {
+	font-family: 'Comic Sans MS', 'Courgette', cursive;
+	}
 	p {
 	color: black;
 	font-family: 'Comic Sans MS', 'Comic Neue', cursive;
@@ -158,16 +162,17 @@
       margin-top: 10px;
     }
 	.imagen-texto {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	gap: 20px;
-	margin-top: 40px;
-	background-color: #933FBF;
-	border-radius: 30px;
-    }
-
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 40px;
+  background-color: #933FBF;
+  border-radius: 30px;
+  padding: 20px; /* 🔥 Añade este padding */
+  box-sizing: border-box; /* 🔥 Asegura que el padding no desborde */
+}
 	.imagen-lado {
 	width: 200px;
 	/* [disabled]border-radius: 15px; */
@@ -244,27 +249,33 @@ const avisoAudio = document.getElementById('avisoAudio');
 window.addEventListener("load", () => {
   audio.volume = 1;
   audio.play().then(() => {
+    // Si el audio se reproduce automáticamente, muestra "Pausar música"
     playPauseBtn.innerText = "⏸ Pausar música";
   }).catch(() => {
-    // Autoplay bloqueado, mostramos aviso
+    // Autoplay bloqueado, mostramos aviso y el botón muestra "Reproducir música"
     avisoAudio.style.display = 'block';
     playPauseBtn.innerText = "▶️ Reproducir música";
   });
 });
 
+audio.addEventListener("playing", () => {
+  playPauseBtn.innerText = "⏸ Pausar música";
+});
+
+audio.addEventListener("pause", () => {
+  playPauseBtn.innerText = "▶️ Reproducir música";
+});
+
 playPauseBtn.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
-    playPauseBtn.innerText = "⏸ Pausar música";
   } else {
     audio.pause();
-    playPauseBtn.innerText = "▶️ Reproducir música";
   }
 });
 
 volumenSlider.addEventListener('input', () => {
-  const volumen = parseFloat(volumenSlider.value);
-  audio.volume = volumen;
+  audio.volume = volumenSlider.value;
 });
 </script>
   </div>
