@@ -465,14 +465,12 @@ const avisoAudio = document.getElementById('avisoAudio');
 window.addEventListener("load", () => {
   audio.volume = 1;
   audio.play().then(() => {
-    // Si el audio se reproduce automáticamente, muestra "Pausar música"
-    playPauseBtn.innerText = "⏸ Pausar música";
+    avisoAudio.style.display = 'block'; // mostrar siempre
   }).catch(() => {
-    // Autoplay bloqueado, mostramos aviso y el botón muestra "Reproducir música"
-    avisoAudio.style.display = 'block';
-    playPauseBtn.innerText = "▶️ Reproducir música";
+    avisoAudio.style.display = 'block'; // mostrar si autoplay falla
   });
 });
+
 
 audio.addEventListener("playing", () => {
   playPauseBtn.innerText = "⏸ Pausar música";
@@ -493,13 +491,6 @@ playPauseBtn.addEventListener('click', () => {
 volumenSlider.addEventListener('input', () => {
   audio.volume = volumenSlider.value;
 });
-</script>
-
-<script>
-  window.addEventListener('load', () => {
-    // Fuerza un resize event al cargar para aplicar el CSS correctamente
-    window.dispatchEvent(new Event('resize'));
-  });
 </script>
 </body>
 </html>
