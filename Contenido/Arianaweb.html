@@ -116,12 +116,15 @@
   .botones {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 20px; /* puedes ajustar el espacio vertical entre botones */
   text-align: center;
-  align-items: center; /* centra los botones en flex */
+  align-items: center; /* centra los botones horizontalmente */
+  justify-content: center; /* centra verticalmente si aplica */
 }
   }
     .boton {
+	display: block;
+    margin: auto;
 	background-color: #933FBF;
 	border: none;
 	padding: 15px 30px;
