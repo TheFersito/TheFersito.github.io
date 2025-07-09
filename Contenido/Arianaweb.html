@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
   <link rel="icon" href="imagenes/logo.png" type="image/png">
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>💖 Eres la mejor 💖</title>
@@ -56,7 +57,7 @@
     }
 	p {
 	color: black;
-	font-family: "Comic Sans MS", cursive;
+	font-family: 'Comic Sans MS', 'Comic Neue', cursive;
 	}
     .mensaje {
       padding: 30px;
@@ -235,32 +236,36 @@
 </div>
 
 <script>
-  const audio = document.getElementById('musica');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const volumenSlider = document.getElementById('volumen');
-  const avisoAudio = document.getElementById('avisoAudio');
+ const audio = document.getElementById('musica');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const volumenSlider = document.getElementById('volumen');
+const avisoAudio = document.getElementById('avisoAudio');
 
-  window.addEventListener("load", () => {
-    audio.volume = 1;
-    audio.play().catch(() => {
-      // Autoplay bloqueado, mostramos aviso
-      avisoAudio.style.display = 'block';
-    });
+window.addEventListener("load", () => {
+  audio.volume = 1;
+  audio.play().then(() => {
+    playPauseBtn.innerText = "⏸ Pausar música";
+  }).catch(() => {
+    // Autoplay bloqueado, mostramos aviso
+    avisoAudio.style.display = 'block';
+    playPauseBtn.innerText = "▶️ Reproducir música";
   });
+});
 
-  playPauseBtn.addEventListener('click', () => {
-    if (audio.paused) {
-      audio.play();
-      playPauseBtn.innerText = "⏸ Pausar música";
-    } else {
-      audio.pause();
-      playPauseBtn.innerText = "▶️ Reproducir música";
-    }
-  });
+playPauseBtn.addEventListener('click', () => {
+  if (audio.paused) {
+    audio.play();
+    playPauseBtn.innerText = "⏸ Pausar música";
+  } else {
+    audio.pause();
+    playPauseBtn.innerText = "▶️ Reproducir música";
+  }
+});
 
-  volumenSlider.addEventListener('input', () => {
-    audio.volume = volumenSlider.value;
-  });
+volumenSlider.addEventListener('input', () => {
+  const volumen = parseFloat(volumenSlider.value);
+  audio.volume = volumen;
+});
 </script>
   </div>
   
