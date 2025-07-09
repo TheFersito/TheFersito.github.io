@@ -383,6 +383,12 @@ volumenSlider.addEventListener('input', () => {
     canvas.height = H;
   });
 </script>
+<script>
+  window.addEventListener('load', () => {
+    // Fuerza un resize event al cargar para aplicar el CSS correctamente
+    window.dispatchEvent(new Event('resize'));
+  });
+</script>
 
 </body>
 </html>
