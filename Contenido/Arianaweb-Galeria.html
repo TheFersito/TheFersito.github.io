@@ -140,13 +140,21 @@
 	box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5), 5px 0 10px rgba(0, 0, 0, 0.5);
 	border-top: 5px solid #C285E0;
     }
+.botones {
+  display: flex;
+  flex-direction: row; /* fila en PC */
+  flex-wrap: wrap; /* permite que bajen si no entran */
+  gap: 20px;
+  justify-content: center;
+  text-align: center;
+}
 
-    .botones {
-      flex-direction: column;
-      gap: 15px;
-      text-align: center;
-    }
-
+@media (max-width: 768px) {
+  .botones {
+    flex-direction: column; /* columna en móvil */
+    align-items: center;
+  }
+}
     .boton {
       background-color: #933FBF;
       border: none;
@@ -487,5 +495,11 @@ volumenSlider.addEventListener('input', () => {
 });
 </script>
 
+<script>
+  window.addEventListener('load', () => {
+    // Fuerza un resize event al cargar para aplicar el CSS correctamente
+    window.dispatchEvent(new Event('resize'));
+  });
+</script>
 </body>
 </html>
