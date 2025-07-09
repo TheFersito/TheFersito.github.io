@@ -114,11 +114,12 @@
   <style>
   @media (max-width: 768px) {
   .botones {
-    display: flex;
-    flex-direction: column;
-    gap: 20px; /* espacio entre botones */
-    align-items: center;
-  }
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  align-items: center; /* centra los botones en flex */
+}
   }
     .boton {
 	background-color: #933FBF;
@@ -250,9 +251,9 @@ const avisoAudio = document.getElementById('avisoAudio');
 window.addEventListener("load", () => {
   audio.volume = 1;
   audio.play().then(() => {
-    avisoAudio.style.display = 'block'; // Mostrar aviso si reproduce exitosamente
+    avisoAudio.style.display = 'block'; // mostrar siempre
   }).catch(() => {
-    avisoAudio.style.display = 'block'; // Mostrar aviso si autoplay falla
+    avisoAudio.style.display = 'block'; // mostrar si autoplay falla
   });
 });
 
