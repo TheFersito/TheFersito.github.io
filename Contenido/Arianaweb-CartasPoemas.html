@@ -481,31 +481,41 @@ h2 {
 </script>
 
 <script>
-  const audio = document.getElementById('musica');
-  const playPauseBtn = document.getElementById('playPauseBtn');
-  const volumenSlider = document.getElementById('volumen');
-  const avisoAudio = document.getElementById('avisoAudio');
+ const audio = document.getElementById('musica');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const volumenSlider = document.getElementById('volumen');
+const avisoAudio = document.getElementById('avisoAudio');
 
-  window.addEventListener("load", () => {
-    audio.volume = 1;
-    audio.play().catch(() => {
-      // Autoplay bloqueado, mostramos aviso
-      avisoAudio.style.display = 'block';
-    });
+window.addEventListener("load", () => {
+  audio.volume = 1;
+  audio.play().then(() => {
+    // Si el audio se reproduce automáticamente, muestra "Pausar música"
+    playPauseBtn.innerText = "⏸ Pausar música";
+  }).catch(() => {
+    // Autoplay bloqueado, mostramos aviso y el botón muestra "Reproducir música"
+    avisoAudio.style.display = 'block';
+    playPauseBtn.innerText = "▶️ Reproducir música";
   });
+});
 
-  playPauseBtn.addEventListener('click', () => {
-  const gifs = document.getElementById('gifsMusicales');
+audio.addEventListener("playing", () => {
+  playPauseBtn.innerText = "⏸ Pausar música";
+});
 
+audio.addEventListener("pause", () => {
+  playPauseBtn.innerText = "▶️ Reproducir música";
+});
+
+playPauseBtn.addEventListener('click', () => {
   if (audio.paused) {
     audio.play();
-    playPauseBtn.innerText = "⏸ Pausar música";
-    gifs.style.display = 'flex';
   } else {
     audio.pause();
-    playPauseBtn.innerText = "▶️ Reproducir música";
-    gifs.style.display = 'none';
   }
+});
+
+volumenSlider.addEventListener('input', () => {
+  audio.volume = volumenSlider.value;
 });
 </script>
 

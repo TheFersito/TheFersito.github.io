@@ -112,13 +112,14 @@
   </style>
   
   <style>
+  @media (max-width: 768px) {
   .botones {
-	/* [disabled]display: flex; */
-	flex-direction: column;
-	gap: 15px;
-	text-align: center;
-    }
-
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* espacio entre botones */
+    align-items: center;
+  }
+  }
     .boton {
 	background-color: #933FBF;
 	border: none;
@@ -249,14 +250,12 @@ const avisoAudio = document.getElementById('avisoAudio');
 window.addEventListener("load", () => {
   audio.volume = 1;
   audio.play().then(() => {
-    // Si el audio se reproduce automáticamente, muestra "Pausar música"
-    playPauseBtn.innerText = "⏸ Pausar música";
+    avisoAudio.style.display = 'block'; // Mostrar aviso si reproduce exitosamente
   }).catch(() => {
-    // Autoplay bloqueado, mostramos aviso y el botón muestra "Reproducir música"
-    avisoAudio.style.display = 'block';
-    playPauseBtn.innerText = "▶️ Reproducir música";
+    avisoAudio.style.display = 'block'; // Mostrar aviso si autoplay falla
   });
 });
+
 
 audio.addEventListener("playing", () => {
   playPauseBtn.innerText = "⏸ Pausar música";
@@ -285,7 +284,7 @@ volumenSlider.addEventListener('input', () => {
   <div class="texto-lado">
     <h2>¿Por qué programe esta página web?</h2>
     <p id="white">
-      Es obvio, estaba aburrid-- digo no sabia que regalarte jujuju, para mi tu eres una personita increíble, quiero que siempre sonrías, que superes lo que te propongas a pesar de los errores y tropiezos que tengas. Esta página web contiene muchas cositas que vivimos juntos, asi queeee, todo lo que se ve en está página son solo recuerdos que tuvimos juntos, bonitos y inolvidables. Aprovecha tu tiempo, revisa el contenido y siempre recuerda que eres muy importante para tu Fersito.</p>
+      Es obvio, estaba aburrid- digo no sabia que regalarte jujuju, para mi tu eres una personita increíble, quiero que siempre sonrías, que superes lo que te propongas a pesar de los errores y tropiezos que tengas. Esta página web contiene muchas cositas que vivimos juntos, asi queeee, todo lo que se ve en está página son solo recuerdos que tuvimos juntos, bonitos y inolvidables. Aprovecha tu tiempo, revisa el contenido y siempre recuerda que eres muy importante para tu Fersito.</p>
   </div>
 </section>
   <section class="imagen-texto">
