@@ -112,16 +112,20 @@
   </style>
   
   <style>
-  @media (max-width: 768px) {
   .botones {
   display: flex;
   flex-direction: column;
   gap: 20px; /* puedes ajustar el espacio vertical entre botones */
   text-align: center;
   align-items: center; /* centra los botones horizontalmente */
-  justify-content: center; /* centra verticalmente si aplica */
+  justify-content: center; /* centra verticalmente si aplicara */
 }
+
+@media (max-width: 768px) {
+  .botones {
+    /* Puedes ajustar estilos adicionales en móviles si deseas */
   }
+}
     .boton {
 	display: inline-block;
     margin: 10px 0; /* espacio vertical */
