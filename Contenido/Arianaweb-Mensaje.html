@@ -16,7 +16,7 @@
     margin: 0;
     background-color: black;
     color: white;
-    font-family: 'Determination Mono', monospace; /* Fuente PC por defecto */
+    font-family: 'Determination Mono', monospace;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -37,7 +37,7 @@
     box-sizing: border-box;
     background-color: black;
     white-space: pre-wrap;
-    position: relative;
+    text-align: center;
   }
 
   .cursor {
@@ -75,18 +75,12 @@
     color: white;
   }
 
-  .corazon-indicador {
-    position: fixed;
-    top: 60px;
-    left: 100px;
-    width: 32px;
-    height: 32px;
-    display: none;
-    z-index: 999;
-  }
-
-  @media (max-width: 768px) {
-    .corazon-indicador { display: none; }
+  .indicador-corazon {
+    display: block;
+    margin: 10px auto 0;
+    width: 32px; /* ajusta al tamaño real de tu imagen */
+    height: auto;
+    animation: parpadeo 1s infinite;
   }
 </style>
 </head>
@@ -94,9 +88,6 @@
 <body>
   <!-- Botón regresar -->
   <a href="Arianaweb-CartasPoemasALT.html" class="boton-regresar">⟵ Regresar</a>
-
-  <!-- Indicador de corazón -->
-  <img src="imagenes/corazon.png" alt="Corazón" class="corazon-indicador" id="corazon">
 
   <!-- Caja de texto -->
   <div class="caja-texto" id="cajaTexto"></div>
@@ -264,11 +255,10 @@
 	  "...",
     ];
 
-  let mensajeIndex = 0;
+   let mensajeIndex = 0;
   let charIndex = 0;
   const caja = document.getElementById('cajaTexto');
   const typeSound = document.getElementById('typeSound');
-  const corazon = document.getElementById('corazon');
   let escribiendo = false;
 
   function escribirMensaje() {
@@ -288,16 +278,14 @@
       charIndex++;
       setTimeout(escribirMensaje, delay);
     } else {
-      caja.innerHTML = texto; // sin cursor al terminar
-      corazon.style.display = "block"; // muestra el corazón
+      // Mostrar el corazón dentro del cuadro al terminar
+      caja.innerHTML = texto + '<br><img src="imagenes/corazon.png" alt="Corazón" class="indicador-corazon">';
       escribiendo = false;
     }
   }
 
   function siguienteMensaje() {
-
     if (escribiendo) return;
-    corazon.style.display = "none"; // oculta el corazón antes del siguiente mensaje
     mensajeIndex++;
     if (mensajeIndex >= mensajes.length) mensajeIndex = 0;
     charIndex = 0;
