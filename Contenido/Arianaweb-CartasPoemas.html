@@ -386,7 +386,11 @@ h2 {
 .zoom-activo {
   transform: scale(2);
   cursor: zoom-out;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease; /* animación al aplicar zoom */
+}
+
+#popupImg {
+  transition: transform 0.3s ease; /* animación al quitar zoom */
 }
 	</style>
  
@@ -448,7 +452,7 @@ h2 {
 
 <h2> Gif chistoso </h2>
 <section class="galeria">
-      <img src="imagenes/tennadance2.gif" onclick="mostrarPopup('imagenes/tennadance2.gif', 'Que?? Disfruta del gif bailando :V')">
+      <img src="imagenes/tennadance2.gif" onclick="location.href='Arianaweb-Mensaje.html'">
     </section>
     
 
@@ -499,25 +503,28 @@ h2 {
 const playPauseBtn = document.getElementById('playPauseBtn');
 const volumenSlider = document.getElementById('volumen');
 const avisoAudio = document.getElementById('avisoAudio');
+const gifsMusicales = document.getElementById('gifsMusicales');
 
 window.addEventListener("load", () => {
   audio.volume = 1;
   audio.play().then(() => {
-    // Si el audio se reproduce automáticamente, muestra "Pausar música"
     playPauseBtn.innerText = "⏸ Pausar música";
+    gifsMusicales.style.display = "flex";
   }).catch(() => {
-    // Autoplay bloqueado, mostramos aviso y el botón muestra "Reproducir música"
     avisoAudio.style.display = 'block';
     playPauseBtn.innerText = "▶️ Reproducir música";
+    gifsMusicales.style.display = "none";
   });
 });
 
 audio.addEventListener("playing", () => {
   playPauseBtn.innerText = "⏸ Pausar música";
+  gifsMusicales.style.display = "flex";
 });
 
 audio.addEventListener("pause", () => {
   playPauseBtn.innerText = "▶️ Reproducir música";
+  gifsMusicales.style.display = "none";
 });
 
 playPauseBtn.addEventListener('click', () => {
@@ -534,10 +541,18 @@ volumenSlider.addEventListener('input', () => {
 </script>
 
 <script>
-  const popupImg = document.getElementById('popupImg');
-  popupImg.addEventListener('click', () => {
-    popupImg.classList.toggle('zoom-activo');
-  });
+ const popupImg = document.getElementById('popupImg');
+const esTactil = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+function toggleZoom() {
+  popupImg.classList.toggle('zoom-activo');
+}
+
+if (esTactil) {
+  popupImg.addEventListener('touchstart', toggleZoom);
+} else {
+  popupImg.addEventListener('click', toggleZoom);
+}
 </script>
 
 

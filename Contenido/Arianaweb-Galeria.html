@@ -407,6 +407,8 @@
       <img src="imagenes/Ari y Fer/Gato.jpg" onclick="mostrarPopup('imagenes/Ari y Fer/Gato.jpg', 'Luego de que me regalaras este peluche, intente tomar una foto y mi gato termino por ponerse en la cámara jaja')">
      <img src="imagenes/Ari y Fer/Arianita Bros.png"
      onclick="mostrarPopup('imagenes/Ari y Fer/Arianita Bros.png', 'Ya me olvide la razón del porque hice este edit tuyo, pero heeeey te ves hermosa y no tengo la foto original pipipi.')">
+      <img src="imagenes/Ari y Fer/teamoari.jpg"
+     onclick="mostrarPopup('imagenes/Ari y Fer/teamoari.jpg', 'Te Amo Ari, quiero presumirte todo lo que pueda, cada que pueda, porque quiero que todos sepan lo valiosa que eres para mi ❤️')">
 
     </section>
 
@@ -462,23 +464,28 @@
 const playPauseBtn = document.getElementById('playPauseBtn');
 const volumenSlider = document.getElementById('volumen');
 const avisoAudio = document.getElementById('avisoAudio');
+const gifsMusicales = document.getElementById('gifsMusicales');
 
 window.addEventListener("load", () => {
   audio.volume = 1;
   audio.play().then(() => {
-    avisoAudio.style.display = 'block'; // mostrar siempre
+    playPauseBtn.innerText = "⏸ Pausar música";
+    gifsMusicales.style.display = "flex";
   }).catch(() => {
-    avisoAudio.style.display = 'block'; // mostrar si autoplay falla
+    avisoAudio.style.display = 'block';
+    playPauseBtn.innerText = "▶️ Reproducir música";
+    gifsMusicales.style.display = "none";
   });
 });
 
-
 audio.addEventListener("playing", () => {
   playPauseBtn.innerText = "⏸ Pausar música";
+  gifsMusicales.style.display = "flex";
 });
 
 audio.addEventListener("pause", () => {
   playPauseBtn.innerText = "▶️ Reproducir música";
+  gifsMusicales.style.display = "none";
 });
 
 playPauseBtn.addEventListener('click', () => {
