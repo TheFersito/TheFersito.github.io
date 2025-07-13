@@ -29,16 +29,16 @@
   }
 
   .caja-texto {
-    border: 4px solid white;
-    padding: 20px;
-    width: 80%;
-    max-width: 600px;
-    font-size: 1.2em;
-    box-sizing: border-box;
-    background-color: black;
-    white-space: pre-wrap;
-    text-align: center;
-  }
+  border: 4px solid white;
+  padding: 20px;
+  width: 80%;
+  max-width: 600px;
+  font-size: 1.2em;
+  box-sizing: border-box;
+  background-color: black;
+  white-space: pre-wrap;
+  /* text-align: center; */ /* elimina esta línea */
+}
 
   .cursor {
     display: inline-block;
@@ -262,27 +262,27 @@
   let escribiendo = false;
 
   function escribirMensaje() {
-    escribiendo = true;
-    const texto = mensajes[mensajeIndex];
-    if (charIndex < texto.length) {
-      caja.innerHTML = texto.substring(0, charIndex+1) + '<span class="cursor"></span>';
-      if (texto[charIndex] !== " " && texto[charIndex] !== "\n") {
-        typeSound.currentTime = 0;
-        typeSound.play();
-      }
-
-      let delay = 50;
-      const currentChar = texto[charIndex];
-      if (currentChar === "," || currentChar === ".") delay = 300;
-
-      charIndex++;
-      setTimeout(escribirMensaje, delay);
-    } else {
-      // Mostrar el corazón dentro del cuadro al terminar
-      caja.innerHTML = texto + '<br><img src="imagenes/corazon.png" alt="Corazón" class="indicador-corazon">';
-      escribiendo = false;
+  escribiendo = true;
+  const texto = mensajes[mensajeIndex];
+  if (charIndex < texto.length) {
+    caja.innerHTML = texto.substring(0, charIndex+1) + '<span class="cursor"></span>';
+    if (texto[charIndex] !== " " && texto[charIndex] !== "\n") {
+      typeSound.currentTime = 0;
+      typeSound.play();
     }
+
+    let delay = 50;
+    const currentChar = texto[charIndex];
+    if (currentChar === "," || currentChar === ".") delay = 300;
+
+    charIndex++;
+    setTimeout(escribirMensaje, delay);
+  } else {
+    // Mostrar el corazón centrado debajo sin afectar alineación del texto
+    caja.innerHTML = texto + '<div style="text-align:center;"><img src="imagenes/corazon.png" alt="Corazón" class="indicador-corazon"></div>';
+    escribiendo = false;
   }
+}
 
   function siguienteMensaje() {
     if (escribiendo) return;
