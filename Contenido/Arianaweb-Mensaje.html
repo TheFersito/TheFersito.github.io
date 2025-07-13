@@ -5,26 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mensaje</title>
 
-  <!-- Fuente Determination Mono en formatos woff2 y woff -->
-  <style>
-    @font-face {
-      font-family: 'Determination Mono';
-      src: url('fonts/determination-mono.woff2') format('woff2'),
-           url('fonts/determination-mono.woff') format('woff');
-      font-weight: normal;
-      font-style: normal;
-    }
+  <!-- Fuentes -->
+  <link rel="stylesheet" type="text/css" href="//undertalefonts.duodecima.technology/webfonts/stylesheet.css">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
+  <style>
     body {
       margin: 0;
       background-color: black;
       color: white;
-      font-family: 'Determination Mono', monospace;
+      font-family: 'Determination Mono', monospace; /* Fuente PC por defecto */
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       user-select: none;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        font-family: 'Press Start 2P', monospace; /* Fuente para móviles */
+      }
     }
 
     .caja-texto {
@@ -56,7 +58,6 @@
 <body>
   <div class="caja-texto" id="cajaTexto"></div>
 
-  <!-- Sonido de tipeo -->
   <audio id="typeSound" src="sonidos/snd_txt1.mp3" preload="auto"></audio>
 
   <script>
@@ -94,7 +95,7 @@
       if (escribiendo) return; // si está escribiendo, no pasar
       mensajeIndex++;
       if (mensajeIndex >= mensajes.length) {
-        mensajeIndex = 0; // reinicia, o cambia por return si deseas finalizar
+        mensajeIndex = 0; // reinicia o puedes poner return para finalizar
       }
       charIndex = 0;
       escribirMensaje();
