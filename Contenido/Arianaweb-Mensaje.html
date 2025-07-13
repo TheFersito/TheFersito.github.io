@@ -40,6 +40,14 @@
       background-color: black;
       white-space: pre-wrap;
     }
+	
+	.corazon {
+  display: block;
+  text-align: center;
+  font-size: 2em;
+  animation: parpadeo 1s infinite;
+  margin-top: 10px;
+}
 
     .cursor {
       display: inline-block;
@@ -280,7 +288,8 @@
     charIndex++;
     setTimeout(escribirMensaje, delay);
   } else {
-    caja.innerHTML = texto; // quitar cursor al terminar
+    // Mostrar el mensaje completo con el corazón al terminar
+    caja.innerHTML = texto + '<div class="corazon">▼</div>';
     escribiendo = false;
   }
 }
