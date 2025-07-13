@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mensaje</title>
+
+  <!-- Fuente Determination Mono en formatos woff2 y woff -->
   <style>
     @font-face {
       font-family: 'Determination Mono';
-      src: url('fonts/determination-mono.ttf') format('truetype');
+      src: url('fonts/determination-mono.woff2') format('woff2'),
+           url('fonts/determination-mono.woff') format('woff');
       font-weight: normal;
       font-style: normal;
     }
@@ -16,7 +19,7 @@
       margin: 0;
       background-color: black;
       color: white;
-      font-family: 'Determination Mono', cursive;
+      font-family: 'Determination Mono', monospace;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -53,6 +56,7 @@
 <body>
   <div class="caja-texto" id="cajaTexto"></div>
 
+  <!-- Sonido de tipeo -->
   <audio id="typeSound" src="sonidos/snd_txt1.mp3" preload="auto"></audio>
 
   <script>
@@ -90,7 +94,7 @@
       if (escribiendo) return; // si está escribiendo, no pasar
       mensajeIndex++;
       if (mensajeIndex >= mensajes.length) {
-        mensajeIndex = 0; // reinicia o puedes poner return para finalizar
+        mensajeIndex = 0; // reinicia, o cambia por return si deseas finalizar
       }
       charIndex = 0;
       escribirMensaje();
