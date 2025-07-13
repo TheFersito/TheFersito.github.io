@@ -117,29 +117,34 @@
 	  "Sé que no la estas pasando bien.",
 	  "Sé que te encuentras mal, desanimada aveces.",
 	  "Escucharte decir eso, escuchar que te va mal.",
-	  "Me da miedo...\nMiedo de no estar contigo para darte un abrazo y decir que todo va a estar bien.",
+	  "Me da miedo...",
+	  "Miedo de no estar contigo para darte un abrazo y decir que todo va a estar bien.",
 	  "Quisiera estar contigo, acompañarte en todo momento.\nEntiendo si no te parece correcto o no lo encuentras bien.",
 	  "Pero viendo como van las cosas...",
 	  "No me importa que tan complicado sea verte, hablarte o escribirte.",
 	  "Dare todo con tal de poder cumplir con mi promosa.",
 	  "Una promesa que no quiero romper.\nLa única promesa que estoy dispuesto a seguir.",
-	  "´´Apoyarte, amarte, cuidarte, sin importar las cirscuntancias, siendo amigos, siempre unidos.´´",
+	  "´´Apoyarte, amarte, cuidarte, sin importar las cirscuntancias, como buenos amigos.´´",
 	  "Tu y Yo\nYo y Tu",
 	  "Viviendo juntos, donde todo lo malo no se encuentre presente...",
-	  "Eso es bonito, no?\nConsidero que es un deseo...",
-	  "Algo bonito y tierno jajaja",
+	  "Eso es bonito, no?",
+	  "Lo considero como un deseo.",
+	  "Una meta...",
+	  "Es algo bonito y tierno jajaja",
 	  "Pero si, ten en cuenta que nunca te dejare, nunca te olvidare.",
-	  "Y con este medallón que te regalé,\n NUNCA lo perdere...",
-	  "Por que si lo hiciera,\nMe odiaria a mi mismo, más de lo que hago.",
+	  "Y con este medallón que te regalé,\nNUNCA lo perdere...",
+	  "Por que si lo hiciera...",
+	  "Me odiaria a mi mismo, más de lo que hago.",
 	  "Y por qué?",
 	  "Fácil.",
 	  "Porque te amo <3",
-	  "Nunca te rindas\nSentirse mal es algo normal.",
+	  "Y como siempre te lo digo...",
+	  "Nunca te rindas.\nSentirse mal es algo normal.",
 	  "Pero ten siempre en cuenta, que no importa que tan fea sea la situación para ti.",
 	  "Que yo estaré siempre para tí.",
 	  "Siempre",
 	  "Siempre",
-	  "Y siempre, para que puedas ser feliz.",
+	  "Para que puedas ser feliz.",
 	  "Eso es todo lo que tenia que decir.",
 	  "Feliz cumpleaños mi querida\nAriana Collantes Velasquez.",
 	  "Tu Fersito, está dispuesto a seguirte y apoyarte durante tu camino en el presenté y en el futuro.",
@@ -147,7 +152,7 @@
 	  "Jajaja",
 	  "Te quiero muchoooooo",
 	  "Te deseo lo mejoooor",
-	  "Siempre te dire eso, nunca lo olvides.",
+	  "Siempre te dire esoy no me cansaré de decirtelo.",
 	  "Y esto ya es todo, ya puedes irte.",
 	  "...",
 	  "...",
@@ -253,21 +258,29 @@
     let escribiendo = false;
 
     function escribirMensaje() {
-      escribiendo = true;
-      const texto = mensajes[mensajeIndex];
-      if (charIndex < texto.length) {
-        caja.innerHTML = texto.substring(0, charIndex+1) + '<span class="cursor"></span>';
-        if (texto[charIndex] !== " " && texto[charIndex] !== "\n") {
-          typeSound.currentTime = 0;
-          typeSound.play();
-        }
-        charIndex++;
-        setTimeout(escribirMensaje, 50);
-      } else {
-        caja.innerHTML = texto; // quitar cursor al terminar
-        escribiendo = false;
-      }
+  escribiendo = true;
+  const texto = mensajes[mensajeIndex];
+  if (charIndex < texto.length) {
+    caja.innerHTML = texto.substring(0, charIndex+1) + '<span class="cursor"></span>';
+    if (texto[charIndex] !== " " && texto[charIndex] !== "\n") {
+      typeSound.currentTime = 0;
+      typeSound.play();
     }
+
+    // Determinar el tiempo de espera según el carácter
+    let delay = 50; // normal
+    const currentChar = texto[charIndex];
+    if (currentChar === "," || currentChar === ".") {
+      delay = 300; // pausa más larga en comas y puntos
+    }
+
+    charIndex++;
+    setTimeout(escribirMensaje, delay);
+  } else {
+    caja.innerHTML = texto; // quitar cursor al terminar
+    escribiendo = false;
+  }
+}
 
     function siguienteMensaje() {
       if (escribiendo) return; // si está escribiendo, no pasar
