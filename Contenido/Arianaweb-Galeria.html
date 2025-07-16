@@ -356,6 +356,66 @@
   margin-top: 10px;
 }
 	</style>
+    <style>
+   .carrusel-container {
+  position: relative;
+  max-width: 300px; /* Tamaño más pequeño */
+  margin: 20px auto;
+  overflow: hidden;
+  border: 4px solid #C285E0;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.carrusel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carrusel img {
+  width: 100%;
+  flex-shrink: 0;
+  cursor: pointer;
+  filter: blur(8px); /* Borroneo inicial */
+  transition: filter 0.3s;
+}
+
+.carrusel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: #933FBF;
+  border: none;
+  color: white;
+  font-size: 1.5em;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.carrusel-btn:hover {
+  opacity: 1;
+}
+
+.carrusel-btn.prev {
+  left: 5px;
+}
+
+.carrusel-btn.next {
+  right: 5px;
+}
+#popupCarruselImg {
+  max-width: 90vw; /* máximo ancho visible (viewport width) */
+  max-height: 80vh; /* máximo alto visible (viewport height) */
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+</style> 
 </head>
 <body>
   <div class="fondo-animado"></div>
@@ -394,32 +454,38 @@
 <section class="galeria">
       <img src="imagenes/Ari y Fer/No prestar atención en clase.jpg" onclick="mostrarPopup('imagenes/Ari y Fer/No prestar atención en clase.jpg', 'Aqui tratabas de hacer algo con mis colores, sin prestar atención en las clases de la academia jsjs')">
       <img src="imagenes/Ari y Fer/tu sonrisa.jpg" onclick="mostrarPopup('imagenes/Ari y Fer/tu sonrisa.jpg', 'Una foto que te tome desprevenida, me gusta esa sonrisita que tienes ✨')">
-    </section>
+</section>
 
 <h2>❤️ El comienzo de nuestra unión ❤️</h2>
 <section class="galeria">
       <img src="imagenes/Ari y Fer/primera agarrada de manos.jpg" onclick="mostrarPopup('imagenes/Ari y Fer/primera agarrada de manos.jpg', 'Que puedo decir?? eso fue muy de la nada, lleno de emociones positivas, solo eramos tú y yo ♥ yyyyyyyy tu hermana jeje')">
       <img src="imagenes/Ari y Fer/helado.jpg" onclick="mostrarPopup('imagenes/Ari y Fer/helado.jpg', 'Cuando celebramos mi cumpleaños con una salidita y con un heladito, dulce como tú y rico como vos')">
-    </section>
+</section>
 
 <h2>🌟 Otras imágenes 🌟</h2>
 <section class="galeria">
       <img src="imagenes/Ari y Fer/Gato.jpg" onclick="mostrarPopup('imagenes/Ari y Fer/Gato.jpg', 'Luego de que me regalaras este peluche, intente tomar una foto y mi gato termino por ponerse en la cámara jaja')">
      <img src="imagenes/Ari y Fer/Arianita Bros.png"
-     onclick="mostrarPopup('imagenes/Ari y Fer/Arianita Bros.png', 'Ya me olvide la razón del porque hice este edit tuyo, pero heeeey te ves hermosa y no tengo la foto original pipipi.')">
+     onclick="mostrarPopup('imagenes/Ari y Fer/Arianita Bros.png', 'Un edit de ti, lo hice porque sí y tambien porque me gusta verte aunque sea en fotos jajaja.')">
       <img src="imagenes/Ari y Fer/teamoari.jpg"
      onclick="mostrarPopup('imagenes/Ari y Fer/teamoari.jpg', 'Te Amo Ari, quiero presumirte todo lo que pueda, cada que pueda, porque quiero que todos sepan lo valiosa que eres para mi ❤️')">
 
-    </section>
+</section>
 
-<h2>💖 La mejor foto de todas 💖</h2>
+<h2>💖 Las mejores fotos 💖</h2>
 <section class="galeria">
+ <img src="imagenes/Ari y Fer/Peluches.png" onclick="mostrarPopup('imagenes/Ari y Fer/Peluches.png', 'Aqui está el peluche que me regalaste por mi cumpleaños, y compré otro para hacerle compañia, es bonito, no? tu eres el peluche de la izquiera, el bonito, el hermoso, y yo, soy el que toma la foto para ponerla aqui jsjs')">
       <img src="imagenes/Ari y Fer/La mejor foto, el mejor recuerdo.jpg" onclick="mostrarPopup('imagenes/Ari y Fer/La mejor foto, el mejor recuerdo.jpg', '¡La mejor foto de todas! tu y yo, lo mejor de lo mejor.')">
+      <img src="imagenes/Ari y Fer/Arianita (1).jfif" onclick="mostrarPopup('imagenes/Ari y Fer/Arianita (1).jfif', 'Una foto tuya con el medallón que te regale, que puedo decir?? te ves bien hermosa, guapa, bonita, preciosa, inigualable, linda, atractiva, encantadora, simpática, chula, bella, radiante y obviamente divina <333')">
     </section>
     
+    <h2> 🎡 AriCarruseeel 🎡 </h2>
+    <section class="mensaje">
+      <p>Te acuerdas cuando te pedi unas fotos tuyas? buenoo, claramente no las tengo de fondo de pantalla, si no que están aqui, si deseas, puedes verlas, no sientas verguenza por verte a ti misma, eres muy hermosa para mi.</p>
+    </section>
 
     <div id="popupFondo" class="popup-fondo" onclick="cerrarPopup()">
-  <div id="popup" class="popup" onclick="event.stopPropagation()">
+  <div id="popup" class="popup"onclick="event.stopPropagation()">
     <span class="cerrar" onclick="cerrarPopup()">✖</span>
     <div class="popup-contenido">
   <img id="popupTituloImg" src="" alt="Título" style="display:none; max-width: 90%; height: auto; margin-top: 10px; border-radius: 10px;">
@@ -428,11 +494,43 @@
 </div>
   </div>
 </div>
+<!-- Carrusel -->
+<div class="carrusel-container">
+  <button class="carrusel-btn prev" onclick="moverCarrusel(-1)">⟵</button>
+
+  <div class="carrusel">
+    <img src="imagenes/Ari y Fer/Ari Carrusel/Arianita (1).png" alt="Imagen 1" class="borrosa" onclick="mostrarImagen(this.src)">
+    <img src="imagenes/Ari y Fer/Ari Carrusel/Arianita (4).jfif" alt="Imagen 2" class="borrosa" onclick="mostrarImagen(this.src)">
+    <img src="imagenes/Ari y Fer/Ari Carrusel/Arianita (2).jfif" alt="Imagen 3" class="borrosa" onclick="mostrarImagen(this.src)">
+    <!-- Agrega más imágenes aquí -->
+  </div>
+
+  <button class="carrusel-btn next" onclick="moverCarrusel(1)">⟶</button>
+</div>
+
+<!-- Popup para mostrar imagen clara -->
+<div id="popupCarrusel" class="popup-fondo" onclick="cerrarPopupCarrusel()">
+  <div class="popup"onclick="event.stopPropagation()">
+    <span class="cerrar" onclick="cerrarPopupCarrusel()">✖</span>
+    <img id="popupCarruselImg" src="" alt="Imagen ampliada" style="max-width:100%; border-radius:10px;">
+  </div>
+</div>
+
+
+<!-- Popup para mostrar imagen clara -->
+<div id="popupCarrusel" class="popup-fondo" onclick="cerrarPopup()">
+  <div class="popup"onclick="event.stopPropagation()">
+    <span class="cerrar" onclick="cerrarPopup()">✖</span>
+    <img id="popupImg" src="" alt="Imagen ampliada" style="max-width:100%; border-radius:10px;">
+  </div>
+</div>
   </main>
-  <footer>
+
+<footer>
     Hecho con mucho cariño de tu Fersito, quien estará siempre para ti, sin importar las circunstancias ♥♥
   </footer>
-  <script>
+  
+<script>
   function mostrarPopup(imagen, mensaje, tituloImg = null, tamaño = "normal") {
   const popupImg = document.getElementById('popupImg');
   const popupTexto = document.getElementById('popupTexto');
@@ -457,6 +555,32 @@
   function cerrarPopup() {
     document.getElementById('popupFondo').style.display = 'none';
   }
+let indexCarrusel = 0;
+
+function moverCarrusel(direccion) {
+  const carrusel = document.querySelector('.carrusel');
+  const imagenes = carrusel.querySelectorAll('img');
+  indexCarrusel += direccion;
+
+  if (indexCarrusel < 0) {
+    indexCarrusel = imagenes.length - 1;
+  } else if (indexCarrusel >= imagenes.length) {
+    indexCarrusel = 0;
+  }
+
+  carrusel.style.transform = `translateX(${-indexCarrusel * 100}%)`;
+}
+
+function mostrarImagen(src) {
+  const popup = document.getElementById('popupCarrusel');
+  const popupImg = document.getElementById('popupCarruselImg');
+  popupImg.src = src;
+  popup.style.display = 'flex';
+}
+
+function cerrarPopupCarrusel() {
+  document.getElementById('popupCarrusel').style.display = 'none';
+}
 </script>
 
 <script>
